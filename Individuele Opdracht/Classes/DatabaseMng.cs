@@ -60,7 +60,7 @@ namespace Individuele_Opdracht
             return true;
         }
 
-      
+
         /// <summary>
         /// checkt of een gebruiker al bestaat in de database
         /// </summary>
@@ -68,15 +68,19 @@ namespace Individuele_Opdracht
         /// <returns>true als dat zo is anders false</returns>
         public bool BestaatGebruiker(string voornaam)
         {
+            OracleCommand cmd = new OracleCommand();
             try
             {
                 Connect();
-                OracleCommand cmd = new OracleCommand("BestaatGebruiker", conn);
-                cmd.BindByName = true;
+                cmd.Connection = conn;
+                cmd.CommandText = "CreateAccount";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("RETURN", OracleDbType.Varchar2, 10, ParameterDirection.ReturnValue);
+                cmd.Parameters.Add(new OracleParameter("RETURN", OracleDbType.Varchar2));
+                cmd.Parameters["RETURN"].Direction = ParameterDirection.Output;
                 cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, voornaam, ParameterDirection.Input);
+
+
 
 
                 cmd.ExecuteNonQuery();
@@ -102,28 +106,34 @@ namespace Individuele_Opdracht
         /// <param name="voornaam"></param>
         /// <param name="wachtwoord"></param>
         /// <returns></returns>
-        public bool MaakGebruiker(string voornaam,string wachtwoord)
+        public bool MaakGebruiker(string voornaam, string wachtwoord)
         {
-         //   try
-          //  {
-          //      Connect();
-            //    OracleCommand cmd = new OracleCommand("CreateAccount", conn);
-            //    cmd.BindByName = true;
-            //    cmd.CommandType = CommandType.StoredProcedure;
+            OracleCommand cmd = new OracleCommand();
+            try
+            {
+                Connect();
+                cmd.Connection = conn;
+                cmd.CommandText = "CreateAccount";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, voornaam, ParameterDirection.Input);
+                cmd.Parameters.Add("p_pass", OracleDbType.Varchar2, wachtwoord, ParameterDirection.Input);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+
+            }
+            return true;
 
 
-            //    cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, voornaam, ParameterDirection.Input);
-           //     cmd.Parameters.Add("p_pass", OracleDbType.Varchar2, wachtwoord, ParameterDirection.Input);
-            //    cmd.ExecuteNonQuery();
-            //    Disconnect();
-            //    return true;
-          //  }
-         //   catch
-          //  {
-           //    
-           //     throw;
-           // }
-       // }
+
+        }
 
 
 
@@ -172,16 +182,16 @@ namespace Individuele_Opdracht
                 Connect();
                 OracleCommand command = conn.CreateCommand();
                 command.CommandText = sql;
-                 OracleDataReader reader2 = command.ExecuteReader();
-                 while (reader2.Read())
-                 {
-                     result = new Gebruiker(Convert.ToString(reader2["Voornaam"]),
-                                                         Convert.ToString(reader2["Achternaam"]),
-                                                         Convert.ToString(reader2["Wachtwoord"]));
-                 }
-                                
+                OracleDataReader reader2 = command.ExecuteReader();
+                while (reader2.Read())
+                {
+                    result = new Gebruiker(Convert.ToString(reader2["Voornaam"]),
+                                                        Convert.ToString(reader2["Achternaam"]),
+                                                        Convert.ToString(reader2["Wachtwoord"]));
+                }
+
             }
-            
+
             catch
             {
                 return null;
