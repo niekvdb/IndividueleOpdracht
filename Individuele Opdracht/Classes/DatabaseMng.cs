@@ -76,10 +76,11 @@ namespace Individuele_Opdracht
                 cmd.CommandText = "BestaatGebruiker";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                
-                cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, voornaam, ParameterDirection.Input);
-                cmd.Parameters.Add(new OracleParameter("v_result", OracleDbType.Varchar2));
+                cmd.Parameters.Add(new OracleParameter("v_result", OracleDbType.Varchar2,500));
                 cmd.Parameters["v_result"].Direction = ParameterDirection.ReturnValue;
+                cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, voornaam, ParameterDirection.Input);
+                
+              
                 cmd.ExecuteNonQuery();
 
                 string auth = cmd.Parameters["v_result"].Value.ToString();

@@ -34,8 +34,12 @@ namespace Individuele_Opdracht
                }
                 else
                 {
-                    mng.MaakGebruiker(tb_voornaam.Text, tb_pw.Text);
-                    Response.Redirect("Default.aspx");
+                    if(mng.MaakGebruiker(tb_voornaam.Text, tb_pw.Text))
+                    {
+                        Response.Redirect("Default.aspx");
+                    
+                    }
+                    
                 }
             }
         }
