@@ -12,6 +12,11 @@ namespace Individuele_Opdracht
         private DatabaseMng mng = new DatabaseMng();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.IsAuthenticated)
+            {
+                LoginMenu.Text = "Logout";
+
+            }
             foreach(Product product in mng.GetAlleProducten())
             {
                 lbox_Rentables.Items.Add(product.ToString());

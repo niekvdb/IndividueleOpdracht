@@ -60,45 +60,7 @@ namespace Individuele_Opdracht
             return true;
         }
 
-        /// <summary>
-        /// controleert of dit de juiste login gegevens zijn
-        /// </summary>
-        /// <param name="rfid"></param>
-        /// <param name="password"></param>
-        /// <returns>true als het klopt anders false</returns>
-        public bool AuthenticateLogin(string voornaam, string wachtwoord)
-        {
-            try
-            {
-                Connect();
-
-                OracleCommand cmd = new OracleCommand("CHECKLOGIN", conn);
-             
-                cmd.BindByName = true;
-                cmd.CommandType = CommandType.StoredProcedure;
-
-
-                cmd.Parameters.Add("RETURN", OracleDbType.Varchar2, ParameterDirection.Output);
-                cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, voornaam, ParameterDirection.Input);
-                cmd.Parameters.Add("p_pass", OracleDbType.Varchar2, wachtwoord, ParameterDirection.Input);
-
-                
-                cmd.ExecuteNonQuery();
-
-                string auth = cmd.Parameters["RETURN"].Value.ToString();
-
-                Disconnect();
-                if (auth == "true")
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch { throw; }
-        }
+      
         /// <summary>
         /// checkt of een gebruiker al bestaat in de database
         /// </summary>
@@ -142,26 +104,30 @@ namespace Individuele_Opdracht
         /// <returns></returns>
         public bool MaakGebruiker(string voornaam,string wachtwoord)
         {
-            try
-            {
-                Connect();
-                OracleCommand cmd = new OracleCommand("CreateAccount", conn);
-                cmd.BindByName = true;
-                cmd.CommandType = CommandType.StoredProcedure;
+         //   try
+          //  {
+          //      Connect();
+            //    OracleCommand cmd = new OracleCommand("CreateAccount", conn);
+            //    cmd.BindByName = true;
+            //    cmd.CommandType = CommandType.StoredProcedure;
 
 
-                cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, voornaam, ParameterDirection.Input);
-                cmd.Parameters.Add("p_pass", OracleDbType.Varchar2, wachtwoord, ParameterDirection.Input);
-                cmd.ExecuteNonQuery();
-                Disconnect();
-                return true;
-            }
-            catch
-            {
-               
-                throw;
-            }
-        }
+            //    cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, voornaam, ParameterDirection.Input);
+           //     cmd.Parameters.Add("p_pass", OracleDbType.Varchar2, wachtwoord, ParameterDirection.Input);
+            //    cmd.ExecuteNonQuery();
+            //    Disconnect();
+            //    return true;
+          //  }
+         //   catch
+          //  {
+           //    
+           //     throw;
+           // }
+       // }
+
+
+
+
         /// <summary>
         /// Verkrijg alle producten
         /// </summary>

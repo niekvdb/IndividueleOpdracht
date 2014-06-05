@@ -17,8 +17,7 @@ namespace Individuele_Opdracht
             if (Request.IsAuthenticated)
             {
                 LoginMenu.Text = "Logout";
-                FormsAuthentication.SignOut();
-                Response.Redirect(FormsAuthentication.DefaultUrl);
+
             }
         }
     }

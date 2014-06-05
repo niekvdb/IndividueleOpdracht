@@ -28,16 +28,7 @@ namespace Individuele_Opdracht
         {
             if (!Request.IsAuthenticated)
             {
-              //  if (mng.AuthenticateLogin(tb_voornaam.Text, tb_pw.Text))
-             //   {
-               //     FormsAuthentication.RedirectFromLoginPage(this.tb_voornaam.Text, this.cb_remember.Checked);
-               // }
-               // else
-               // {
-              //      this.InvalidLogin.Visible = true;
-              //  }
-
-
+           
                 if (tb_voornaam.Text != "" || tb_pw.Text != "")
                 {
                     Gebruiker per1 = mng.GetGebruiker(tb_voornaam.Text);
@@ -45,7 +36,6 @@ namespace Individuele_Opdracht
                     {
                         if (per1.Wachtwoord == tb_pw.Text)
                         {
-
                             FormsAuthentication.RedirectFromLoginPage(this.tb_voornaam.Text, this.cb_remember.Checked);
                         }
                         else
