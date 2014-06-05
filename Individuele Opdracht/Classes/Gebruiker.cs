@@ -9,14 +9,12 @@ namespace Individuele_Opdracht
     {
         public string Voornaam { get; set; }
         public string Achternaam { get; set; }
-        public string Email { get; set; }
         public string Wachtwoord { get; set; }
 
-        public Gebruiker(string voornaam,string achternaam, string email, string wachtwoord)
+        public Gebruiker(string voornaam,string achternaam, string wachtwoord)
         {
             this.Voornaam = voornaam;
             this.Achternaam = achternaam;
-            this.Email = email;
             this.Wachtwoord = wachtwoord;
         }
 

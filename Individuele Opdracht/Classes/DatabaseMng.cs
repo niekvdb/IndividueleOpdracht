@@ -192,5 +192,36 @@ namespace Individuele_Opdracht
             return results;
         }
 
+        /// <summary>
+        /// Geeft een gebruiker terug 
+        /// </summary>
+        /// <param name="Voornaam"></param>
+        /// <returns></returns>
+        public Gebruiker GetGebruiker(string voornaam)
+        {
+            Gebruiker result = null;
+            string sql = "SELECT * FROM Gebruiker WHERE Voornaam ='" + voornaam + "'";
+            try
+            {
+                Connect();
+                OracleCommand command = conn.CreateCommand();
+                command.CommandText = sql;
+                 OracleDataReader reader2 = command.ExecuteReader();
+                 while (reader2.Read())
+                 {
+                     result = new Gebruiker(Convert.ToString(reader2["Voornaam"]),
+                                                         Convert.ToString(reader2["Achternaam"]),
+                                                         Convert.ToString(reader2["Wachtwoord"]));
+                 }
+                                
+            }
+            
+            catch
+            {
+                return null;
+            }
+            return result;
+        }
+
     }
 }
