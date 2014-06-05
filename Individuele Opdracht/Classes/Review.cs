@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Individuele_Opdracht
+﻿namespace Individuele_Opdracht
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
     public class Review
     {
         public Gebruiker Gebruiker { get; set; }
@@ -23,7 +22,5 @@ namespace Individuele_Opdracht
             this.Product = product;
             this.Score = score;
         }
-
-       
     }
 }

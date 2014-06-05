@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Individuele_Opdracht
+﻿namespace Individuele_Opdracht
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
     public class Categorie
     {
 
@@ -17,9 +16,9 @@ namespace Individuele_Opdracht
             this.Naam = naam;
         }
 
-        public void StelParentIn(string Parentnaam)
+        public void StelParentIn(string parentnaam)
         {
-            this.ParentCategorieNaam = Parentnaam;
+            this.ParentCategorieNaam = parentnaam;
         }
         
         public void Voegproductoe(Product product)

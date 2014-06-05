@@ -36,7 +36,7 @@ namespace Individuele_Opdracht
                 {
                     if(mng.MaakGebruiker(tb_voornaam.Text, tb_pw.Text))
                     {
-                        Response.Redirect("Default.aspx");
+                        Response.Redirect("login.aspx");
                     
                     }
                     

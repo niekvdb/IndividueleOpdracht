@@ -81,7 +81,6 @@
     <Content Include="Default.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Administratie.cs" />
     <Compile Include="Classes\Antwoord.cs" />
     <Compile Include="Classes\Categorie.cs" />
     <Compile Include="Classes\DatabaseMng.cs" />
