@@ -3,3 +3,57 @@
     padding-bottom: 30px;
     background-color: #eee;
 }
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.form-register {
+    max-width: 330px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-left: 0;
+}
+
+.row {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+    .row .row {
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+
+    .row p {
+        font-size: 17px;
+    }
+
+.col-md-4 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #eee;
+    background-color: rgba(86,61,124,0.15);
+    border: 1px solid #ddd;
+    border: 1px solid rgba(86,61,124,0.2);
+}
+
+.remove {
+    float: left;
+    padding-top: 6.5px;
+    padding-bottom: 6.5px;
+    margin-left: 40px;
+}
+
+.label {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 250px;
+    color: #000;
+}
+    .label .label {
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+

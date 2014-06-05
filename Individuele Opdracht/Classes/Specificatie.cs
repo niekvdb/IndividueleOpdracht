@@ -7,6 +7,7 @@ namespace Individuele_Opdracht
 {
     public class Specificatie
     {
+
         public string Model { get; set; }
         public Product Product { get; set; }
         public string Formaat { get; set; }

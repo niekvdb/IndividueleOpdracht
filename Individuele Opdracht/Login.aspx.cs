@@ -4,10 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Web.Security;
 using System.Web.Configuration;
 using System.Configuration;
@@ -32,9 +28,9 @@ namespace Individuele_Opdracht
         {
             if (!Request.IsAuthenticated)
             {
-                if (this.tb_rfid.Text == "300" && this.tb_pw.Text == "sparta")
+                if (mng.AuthenticateLogin(tb_voornaam.Text, tb_pw.Text))
                 {
-                    FormsAuthentication.RedirectFromLoginPage(this.tb_rfid.Text, this.cb_remember.Checked);
+                    FormsAuthentication.RedirectFromLoginPage(this.tb_voornaam.Text, this.cb_remember.Checked);
                 }
                 else
                 {

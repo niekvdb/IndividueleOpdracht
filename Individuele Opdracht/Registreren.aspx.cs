@@ -12,6 +12,7 @@ namespace Individuele_Opdracht
 {
     public partial class Registreren : System.Web.UI.Page
     {
+        private DatabaseMng mng = new DatabaseMng();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.IsAuthenticated)
@@ -26,13 +27,15 @@ namespace Individuele_Opdracht
         {
             if (!Request.IsAuthenticated)
             {
-                if (this.tb_rfid.Text == "300" && this.tb_pw.Text == "sparta")
+                if (mng.BestaatGebruiker(tb_voornaam.Text))
                 {
-                    FormsAuthentication.RedirectFromLoginPage(this.tb_rfid.Text, this.cb_remember.Checked);
+                    string error = "gebruiker bestaat al";
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + error + "');", true);
+                    FormsAuthentication.RedirectFromLoginPage(this.tb_voornaam.Text, this.cb_remember.Checked);
                 }
                 else
                 {
-                    this.InvalidLogin.Visible = true;
+                    mng.MaakGebruiker(tb_voornaam.Text, tb_pw.Text);
                 }
             }
         }

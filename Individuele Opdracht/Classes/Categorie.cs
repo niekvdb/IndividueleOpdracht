@@ -22,7 +22,7 @@ namespace Individuele_Opdracht
             this.ParentCategorieNaam = Parentnaam;
         }
         
-        public void VoegProductToe(Product product)
+        public void Voegproductoe(Product product)
         {
             this.Producten.Add(product);
         }

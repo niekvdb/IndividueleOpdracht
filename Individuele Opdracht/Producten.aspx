@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Producten.aspx.cs" Inherits="Individuele_Opdracht.Product" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Producten.aspx.cs" Inherits="Individuele_Opdracht.Producten" %>
 
 <!DOCTYPE html>
 
@@ -45,7 +45,119 @@
                     </div>
                     <!--/.nav-collapse -->
                 </div>
+
+        </div>
+<div class="container">
+            <h1>Loan Items</h1>
+            <p>Select the items you would like to loan for the event.</p>
+
+            <!-- Listbox -->
+            <div class="lead">
+                <asp:ListBox ID="lbox_Rentables" runat="server">
+                  
+                </asp:ListBox>
+            </div>
+
+            <!--Add Item Button -->
+            <div class="form-register">
+                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="btn_AddItem" runat="server" Text="Add Item" OnClick="btn_AddItem_Click" />
+            </div>
+            <!-- Item -->
+            <div class="row">
+                <div class="col-md-4">
+                    <asp:TextBox ID="txt_Chosen1" runat="server" ReadOnly="True" Width="250px"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList1" runat="server">
+                        <asp:ListItem Value="1"></asp:ListItem>
+                        <asp:ListItem Value="2"></asp:ListItem>
+                        <asp:ListItem Value="3"></asp:ListItem>
+                        <asp:ListItem Value="4"></asp:ListItem>
+                        <asp:ListItem Value="5"></asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:Label ID="Label1" runat="server" Text="€"></asp:Label>
+                </div>
+                <div class="remove">
+                    <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Remove1" runat="server" Text="X" Height="45px" Width="45px" OnClick="Remove1_Click" />
+                </div>
+            </div>
+            <!-- Item -->
+            <div class="row">
+                <div class="col-md-4">
+                    <asp:TextBox ID="txt_Chosen2" runat="server" ReadOnly="True" Width="250px"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList2" runat="server">
+                        <asp:ListItem Value="1"></asp:ListItem>
+                        <asp:ListItem Value="2"></asp:ListItem>
+                        <asp:ListItem Value="3"></asp:ListItem>
+                        <asp:ListItem Value="4"></asp:ListItem>
+                        <asp:ListItem Value="5"></asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:Label ID="Label2" runat="server" Text="€"></asp:Label>
+                </div>
+                <div class="remove">
+                    <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Remove2" runat="server" Text="X" Height="45px" Width="45px" OnClick="Remove2_Click" />
+                </div>
+            </div>
+            <!-- Item -->
+            <div class="row">
+                <div class="col-md-4">
+                    <asp:TextBox ID="txt_Chosen3" runat="server" ReadOnly="True" Width="250px"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList3" runat="server">
+                        <asp:ListItem Value="1"></asp:ListItem>
+                        <asp:ListItem Value="2"></asp:ListItem>
+                        <asp:ListItem Value="3"></asp:ListItem>
+                        <asp:ListItem Value="4"></asp:ListItem>
+                        <asp:ListItem Value="5"></asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:Label ID="Label3" runat="server" Text="€"></asp:Label>
+                </div>
+                <div class="remove">
+                    <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Remove3" runat="server" Text="X" Height="45px" Width="45px" OnClick="Remove3_Click" />
+                </div>
+            </div>
+            <!-- Item -->
+            <div class="row">
+                <div class="col-md-4">
+                    <asp:TextBox ID="txt_Chosen4" runat="server" ReadOnly="True" Width="250px"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList4" runat="server">
+                        <asp:ListItem Value="1"></asp:ListItem>
+                        <asp:ListItem Value="2"></asp:ListItem>
+                        <asp:ListItem Value="3"></asp:ListItem>
+                        <asp:ListItem Value="4"></asp:ListItem>
+                        <asp:ListItem Value="5"></asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:Label ID="Label4" runat="server" Text="€"></asp:Label>
+                </div>
+                <div class="remove">
+                    <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Remove4" runat="server" Text="X" Height="45px" Width="45px" OnClick="Remove4_Click" />
+                </div>
+            </div>
+            <!-- Item -->
+            <div class="row">
+                <div class="col-md-4">
+                    <asp:TextBox ID="txt_Chosen5" runat="server" ReadOnly="True" Width="250px"></asp:TextBox>
+                    <asp:DropDownList ID="DropDownList5" runat="server">
+                        <asp:ListItem Value="1"></asp:ListItem>
+                        <asp:ListItem Value="2"></asp:ListItem>
+                        <asp:ListItem Value="3"></asp:ListItem>
+                        <asp:ListItem Value="4"></asp:ListItem>
+                        <asp:ListItem Value="5"></asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:Label ID="Label5" runat="server" Text="€"></asp:Label>
+                </div>
+                <div class="remove">
+                    <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Remove5" runat="server" Text="X" Height="45px" Width="45px" OnClick="Remove5_Click" />
+                </div>
+            </div>
+
+            <div class="label">
+                <asp:Label ID="Totaal" runat="server" Text="Totaal: €"></asp:Label>
+            </div>
+            <!--Finish Button -->
+            <div class="form-register">
+                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="btn_Finish" runat="server" Text="Finish" OnClick="btn_Finish_Click" />
+            </div>
         </div>
     </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

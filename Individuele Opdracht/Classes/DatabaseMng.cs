@@ -22,12 +22,11 @@ namespace Individuele_Opdracht
         /// <returns>True: Operatie is gelukt. False: Operatie is niet gelukt.</returns>
         public bool Connect()
         {
-            Disconnect();
             try
             {
-                String id = "niek";
-                String pw = "apen11";
-                conn.ConnectionString = "User Id=" + id + ";Password=" + pw + ";Data Source= localhost:1521/xe;";
+                String id = "NIEK";
+                String pw = "password";
+                conn.ConnectionString = "User Id=" + id + ";Password=" + pw + ";Data Source=" + "localhost:1521" + ";";
                 conn.Open();
             }
             catch
@@ -43,7 +42,10 @@ namespace Individuele_Opdracht
                 return false;
             }
         }
-
+        /// <summary>
+        /// sluit de connectie
+        /// </summary>
+        /// <returns>true als het gelukt is anders false</returns>
         public bool Disconnect()
         {
             try
@@ -58,18 +60,61 @@ namespace Individuele_Opdracht
             return true;
         }
 
-        public bool AuthenticateLogin(string rfid, string password)
+        /// <summary>
+        /// controleert of dit de juiste login gegevens zijn
+        /// </summary>
+        /// <param name="rfid"></param>
+        /// <param name="password"></param>
+        /// <returns>true als het klopt anders false</returns>
+        public bool AuthenticateLogin(string voornaam, string wachtwoord)
         {
             try
             {
                 Connect();
+
                 OracleCommand cmd = new OracleCommand("CHECKLOGIN", conn);
+             
                 cmd.BindByName = true;
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("RETURN", OracleDbType.Varchar2, 20, ParameterDirection.ReturnValue);
-                cmd.Parameters.Add("P_RFID", OracleDbType.Varchar2, rfid, ParameterDirection.Input);
-                cmd.Parameters.Add("P_PASS", OracleDbType.Varchar2, password, ParameterDirection.Input);
+
+                cmd.Parameters.Add("RETURN", OracleDbType.Varchar2, ParameterDirection.Output);
+                cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, voornaam, ParameterDirection.Input);
+                cmd.Parameters.Add("p_pass", OracleDbType.Varchar2, wachtwoord, ParameterDirection.Input);
+
+                
+                cmd.ExecuteNonQuery();
+
+                string auth = cmd.Parameters["RETURN"].Value.ToString();
+
+                Disconnect();
+                if (auth == "true")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch { throw; }
+        }
+        /// <summary>
+        /// checkt of een gebruiker al bestaat in de database
+        /// </summary>
+        /// <param name="voornaam"></param>
+        /// <returns>true als dat zo is anders false</returns>
+        public bool BestaatGebruiker(string voornaam)
+        {
+            try
+            {
+                Connect();
+                OracleCommand cmd = new OracleCommand("BestaatGebruiker", conn);
+                cmd.BindByName = true;
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("RETURN", OracleDbType.Varchar2, 10, ParameterDirection.ReturnValue);
+                cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, voornaam, ParameterDirection.Input);
 
 
                 cmd.ExecuteNonQuery();
@@ -89,8 +134,63 @@ namespace Individuele_Opdracht
             catch { throw; }
         }
 
+        /// <summary>
+        /// maakt een nieuwe gebruiker aan
+        /// </summary>
+        /// <param name="voornaam"></param>
+        /// <param name="wachtwoord"></param>
+        /// <returns></returns>
+        public bool MaakGebruiker(string voornaam,string wachtwoord)
+        {
+            try
+            {
+                Connect();
+                OracleCommand cmd = new OracleCommand("CreateAccount", conn);
+                cmd.BindByName = true;
+                cmd.CommandType = CommandType.StoredProcedure;
 
 
+                cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, voornaam, ParameterDirection.Input);
+                cmd.Parameters.Add("p_pass", OracleDbType.Varchar2, wachtwoord, ParameterDirection.Input);
+                cmd.ExecuteNonQuery();
+                Disconnect();
+                return true;
+            }
+            catch
+            {
+               
+                throw;
+            }
+        }
+        /// <summary>
+        /// Verkrijg alle producten
+        /// </summary>
+        /// <param name="voornaam"></param>
+        /// <param name="wachtwoord"></param>
+        /// <returns></returns>
+        public List<Product> GetAlleProducten()
+        {
+            List<Product> results = new List<Product>();
+            string sql = "SELECT * FROM Product";
+            try
+            {
+                Connect();
+                OracleCommand command = conn.CreateCommand();
+                command.CommandText = sql;
+                OracleDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    results.Add(new Product(Convert.ToString(reader["Naam"]),
+                        Convert.ToDouble(reader["Prijs"]), Convert.ToInt32(reader["Score"])));
+                }
+            }
+            catch
+            {
+                throw;
+
+            }
+            return results;
+        }
 
     }
 }
