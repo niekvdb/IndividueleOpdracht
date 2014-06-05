@@ -15,6 +15,7 @@ namespace Individuele_Opdracht
             if (Request.IsAuthenticated)
             {
                 LoginMenu.Text = "Logout";
+                RegMenu.Visible = false;
 
             }
             foreach(Product product in mng.GetAlleProducten())

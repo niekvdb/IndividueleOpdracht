@@ -37,7 +37,8 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li><a href="Registreren.aspx">Registreren</a></li>
+                            <li>
+                            <asp:HyperLink href="Registreren.aspx" ID="RegMenu" runat="server">Registreren</asp:HyperLink></li>
                             <li><a href="Producten.aspx">Producten</a></li>
                             <li>
                                 <asp:HyperLink href="Login.aspx" ID="LoginMenu" runat="server">Login</asp:HyperLink></li>

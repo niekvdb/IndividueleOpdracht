@@ -18,6 +18,7 @@ namespace Individuele_Opdracht
             if (Request.IsAuthenticated)
             {
                 LoginMenu.Text = "Logout";
+                Response.Redirect("Default.aspx");
             }
         }
 
@@ -25,15 +26,16 @@ namespace Individuele_Opdracht
         {
             if (!Request.IsAuthenticated)
             {
-              //  if (mng.BestaatGebruiker(tb_voornaam.Text))
-              //  {
-                //    string error = "gebruiker bestaat al";
-                //    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + error + "');", true);
-                 //   FormsAuthentication.RedirectFromLoginPage(this.tb_voornaam.Text, this.cb_remember.Checked);
-               // }
-               // else
+                if (mng.BestaatGebruiker(tb_voornaam.Text))
+                {
+                    string error = "gebruiker bestaat al";
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + error + "');", true);
+                    
+               }
+                else
                 {
                     mng.MaakGebruiker(tb_voornaam.Text, tb_pw.Text);
+                    Response.Redirect("Default.aspx");
                 }
             }
         }

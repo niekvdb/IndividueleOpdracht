@@ -51,7 +51,7 @@ namespace Individuele_Opdracht
             try
             {
                 conn.Close();
-                conn.Dispose();
+                
             }
             catch
             {
@@ -73,19 +73,16 @@ namespace Individuele_Opdracht
             {
                 Connect();
                 cmd.Connection = conn;
-                cmd.CommandText = "CreateAccount";
+                cmd.CommandText = "BestaatGebruiker";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add(new OracleParameter("RETURN", OracleDbType.Varchar2));
-                cmd.Parameters["RETURN"].Direction = ParameterDirection.Output;
+                
                 cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, voornaam, ParameterDirection.Input);
-
-
-
-
+                cmd.Parameters.Add(new OracleParameter("v_result", OracleDbType.Varchar2));
+                cmd.Parameters["v_result"].Direction = ParameterDirection.ReturnValue;
                 cmd.ExecuteNonQuery();
 
-                string auth = cmd.Parameters["RETURN"].Value.ToString();
+                string auth = cmd.Parameters["v_result"].Value.ToString();
 
                 Disconnect();
                 if (auth == "true")
@@ -130,10 +127,7 @@ namespace Individuele_Opdracht
 
             }
             return true;
-
-
-
-        }
+      }
 
 
 

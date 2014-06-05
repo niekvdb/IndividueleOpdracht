@@ -37,7 +37,9 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li><a href="Registreren.aspx">Registreren</a></li>
+                            <li>
+                            <asp:HyperLink href="Registreren.aspx" ID="RegMenu" runat="server">Registreren</asp:HyperLink></li>
+                
                             <li class="active"><a href="Producten.aspx">Producten</a></li>
                              <li>
                                 <asp:HyperLink href="Login.aspx" ID="LoginMenu" runat="server">Login</asp:HyperLink></li>
@@ -48,8 +50,8 @@
 
         </div>
 <div class="container">
-            <h1>Loan Items</h1>
-            <p>Select the items you would like to loan for the event.</p>
+            <h1>Alle Producten</h1>
+            <p>Voeg hier uw Producten toe </p>
 
             <!-- Listbox -->
             <div class="lead">
@@ -60,7 +62,7 @@
 
             <!--Add Item Button -->
             <div class="form-register">
-                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="btn_AddItem" runat="server" Text="Add Item" OnClick="btn_AddItem_Click" />
+                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="btn_AddItem" runat="server" Text="Voeg toe" OnClick="btn_AddItem_Click" />
             </div>
             <!-- Item -->
             <div class="row">
@@ -153,7 +155,7 @@
             </div>
             <!--Finish Button -->
             <div class="form-register">
-                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="btn_Finish" runat="server" Text="Finish" OnClick="btn_Finish_Click" />
+                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="btn_Finish" runat="server" Text="Bevestig" OnClick="btn_Finish_Click" />
             </div>
         </div>
     </form>
