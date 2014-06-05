@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Individuele_Opdracht.Classes
+namespace Individuele_Opdracht
 {
     public class Antwoord
     {

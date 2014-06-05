@@ -6,7 +6,7 @@ using System.Data;
 using Oracle.DataAccess.Client;
 using Oracle.DataAccess.Types;
 
-namespace Individuele_Opdracht.Classes
+namespace Individuele_Opdracht
 {
     public class DatabaseMng
     {
@@ -25,9 +25,9 @@ namespace Individuele_Opdracht.Classes
             Disconnect();
             try
             {
-                String id = "sme";
-                String pw = "password";
-                conn.ConnectionString = "User Id=" + id + ";Password=" + pw + ";Data Source=" + " //192.168.19.163:1521" + ";";
+                String id = "niek";
+                String pw = "apen11";
+                conn.ConnectionString = "User Id=" + id + ";Password=" + pw + ";Data Source= localhost:1521/xe;";
                 conn.Open();
             }
             catch

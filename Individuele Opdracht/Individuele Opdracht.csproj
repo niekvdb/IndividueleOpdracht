@@ -85,7 +85,9 @@
     <Compile Include="Classes\Categorie.cs" />
     <Compile Include="Classes\DatabaseMng.cs" />
     <Compile Include="Classes\Gebruiker.cs" />
-    <Compile Include="Classes\Product.cs" />
+    <Compile Include="Classes\Product.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Classes\Review.cs" />
     <Compile Include="Classes\Specificatie.cs" />
     <Compile Include="Classes\Vraag.cs" />
