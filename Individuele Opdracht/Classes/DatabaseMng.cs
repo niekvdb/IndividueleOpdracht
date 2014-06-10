@@ -73,12 +73,8 @@
                 cmd.Connection = this.conn;
                 cmd.CommandText = "BestaatGebruiker";
                 cmd.CommandType = CommandType.StoredProcedure;
-
-
                 cmd.Parameters.Add(new OracleParameter("v_result", OracleDbType.Varchar2, 500));
                 cmd.Parameters["v_result"].Direction = ParameterDirection.ReturnValue;
-
-
                 cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, email, ParameterDirection.Input);
                 cmd.ExecuteNonQuery();
                 string auth = cmd.Parameters["v_result"].Value.ToString();
@@ -181,7 +177,11 @@
             this.Disconnect();
             return result;
         }
-
+        /// <summary>
+        /// geeft product terug
+        /// </summary>
+        /// <param name="naam">naam van product</param>
+        /// <returns></returns>
         public Product GetProduct(string naam)
         {
             Product result = null;
@@ -204,6 +204,11 @@
             this.Disconnect();
             return result;
         }
+        /// <summary>
+        /// geeft lijst van reviews terug van een bepaald product
+        /// </summary>
+        /// <param name="naam">productnaam</param>
+        /// <returns></returns>
 
         public List<Review> GetReview(string naam)
         {
@@ -229,7 +234,16 @@
             this.Disconnect();
             return results;
         }
-
+        /// <summary>
+        /// voegt review toe 
+        /// </summary>
+        /// <param name="gebruikerid">id van de gebruiker die de review plaatst</param>
+        /// <param name="productnaam">naam van product dat bij de review hoort</param>
+        /// <param name="titel">titel van de review</param>
+        /// <param name="datum">datum van plaatsing van review</param>
+        /// <param name="reactie">de review zelf</param>
+        /// <param name="score">score van product</param>
+        /// <returns>true als het gelukt is anders false</returns>
         public bool AddReview(int gebruikerid, string productnaam, string titel, DateTime datum, string reactie, int score )
         {
             OracleCommand cmd = new OracleCommand();
@@ -258,7 +272,15 @@
 
             return true;
         }
-
+        /// <summary>
+        /// voegt vraag toe
+        /// </summary>
+        /// <param name="gebruikerid">id van gebruiker die vraag plaatst</param>
+        /// <param name="productnaam">naam van product die bij de vraag hoort</param>
+        /// <param name="tekst">de vraag zelf</param>
+        /// <param name="datum">datum van plaatsing</param>
+        /// <param name="titel">titel van de vraag</param>
+        /// <returns>true als het gelukt is anders false</returns>
         public bool AddVraag(int gebruikerid, string productnaam, string tekst, DateTime datum, string titel)
         {
             OracleCommand cmd = new OracleCommand();
@@ -286,6 +308,11 @@
 
             return true;
         }
+        /// <summary>
+        /// geeft lijst van vragen terug van een bepaald product
+        /// </summary>
+        /// <param name="naam">naam van product</param>
+        /// <returns>lijst van vrage</returns>
         public List<Vraag> GetVraag(string naam)
         {
             Vraag result = null;

@@ -148,6 +148,15 @@ namespace Individuele_Opdracht {
         protected global::System.Web.UI.WebControls.Button btn_ShowINfo;
         
         /// <summary>
+        /// div1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
+        
+        /// <summary>
         /// txt_Chosen1 control.
         /// </summary>
         /// <remarks>
@@ -157,13 +166,13 @@ namespace Individuele_Opdracht {
         protected global::System.Web.UI.WebControls.TextBox txt_Chosen1;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// Label10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.Label Label10;
         
         /// <summary>
         /// Label1 control.
@@ -184,6 +193,15 @@ namespace Individuele_Opdracht {
         protected global::System.Web.UI.WebControls.Button Remove1;
         
         /// <summary>
+        /// div2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
+        
+        /// <summary>
         /// txt_Chosen2 control.
         /// </summary>
         /// <remarks>
@@ -193,13 +211,13 @@ namespace Individuele_Opdracht {
         protected global::System.Web.UI.WebControls.TextBox txt_Chosen2;
         
         /// <summary>
-        /// DropDownList2 control.
+        /// Label9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.Label Label9;
         
         /// <summary>
         /// Label2 control.
@@ -220,6 +238,15 @@ namespace Individuele_Opdracht {
         protected global::System.Web.UI.WebControls.Button Remove2;
         
         /// <summary>
+        /// div3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div3;
+        
+        /// <summary>
         /// txt_Chosen3 control.
         /// </summary>
         /// <remarks>
@@ -229,13 +256,13 @@ namespace Individuele_Opdracht {
         protected global::System.Web.UI.WebControls.TextBox txt_Chosen3;
         
         /// <summary>
-        /// DropDownList3 control.
+        /// Label8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.Label Label8;
         
         /// <summary>
         /// Label3 control.
@@ -256,6 +283,15 @@ namespace Individuele_Opdracht {
         protected global::System.Web.UI.WebControls.Button Remove3;
         
         /// <summary>
+        /// div4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div4;
+        
+        /// <summary>
         /// txt_Chosen4 control.
         /// </summary>
         /// <remarks>
@@ -265,13 +301,13 @@ namespace Individuele_Opdracht {
         protected global::System.Web.UI.WebControls.TextBox txt_Chosen4;
         
         /// <summary>
-        /// DropDownList4 control.
+        /// Label7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::System.Web.UI.WebControls.Label Label7;
         
         /// <summary>
         /// Label4 control.
@@ -292,6 +328,15 @@ namespace Individuele_Opdracht {
         protected global::System.Web.UI.WebControls.Button Remove4;
         
         /// <summary>
+        /// div5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div5;
+        
+        /// <summary>
         /// txt_Chosen5 control.
         /// </summary>
         /// <remarks>
@@ -301,13 +346,13 @@ namespace Individuele_Opdracht {
         protected global::System.Web.UI.WebControls.TextBox txt_Chosen5;
         
         /// <summary>
-        /// DropDownList5 control.
+        /// Label6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList5;
+        protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
         /// Label5 control.
@@ -326,6 +371,15 @@ namespace Individuele_Opdracht {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Remove5;
+        
+        /// <summary>
+        /// Label11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label11;
         
         /// <summary>
         /// Totaal control.

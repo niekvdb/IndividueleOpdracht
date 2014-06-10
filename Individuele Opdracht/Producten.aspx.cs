@@ -13,7 +13,6 @@ namespace Individuele_Opdracht
         private List<Product> products = new List<Product>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             if (Request.IsAuthenticated)
             {
                 LoginMenu.Text = "Logout";
@@ -22,6 +21,7 @@ namespace Individuele_Opdracht
         }
         protected void btn_AddItem_Click(object sender, EventArgs e)
         {
+            products = mng.GetAlleProducten();
             if (lbox_Rentables.SelectedItem == null)
             {
                 string error = "SELECTEER IETS";
@@ -31,54 +31,109 @@ namespace Individuele_Opdracht
 
             if (txt_Chosen1.Text == "")
             {
-                txt_Chosen1.Text = Convert.ToString(lbox_Rentables.SelectedItem);
+                string item = Convert.ToString(lbox_Rentables.SelectedItem);
+                string naam = item.Substring(6, 12);
+                foreach (Product p in products)
+                {
+                    if (p.Naam == naam)
+                    {
+                        Label1.Text = Convert.ToString(p.Prijs);
+                        txt_Chosen1.Text =p.Naam;
+                        Totaal.Text = Convert.ToString(Convert.ToInt32(Label1.Text) + Convert.ToInt32(Label2.Text) + Convert.ToInt32(Label3.Text) + Convert.ToInt32(Label4.Text) + Convert.ToInt32(Label5.Text));
+                    }
+                }
             }
             else if (txt_Chosen2.Text == "")
             {
-                txt_Chosen2.Text = Convert.ToString(lbox_Rentables.SelectedItem);
+                string item = Convert.ToString(lbox_Rentables.SelectedItem);
+                string naam = item.Substring(6, 12);
+                foreach (Product p in products)
+                {
+                    if (p.Naam == naam)
+                    {
+                        Label2.Text = Convert.ToString(p.Prijs);
+                        txt_Chosen2.Text = p.Naam;
+                        Totaal.Text = Convert.ToString(Convert.ToInt32(Label1.Text) + Convert.ToInt32(Label2.Text) + Convert.ToInt32(Label3.Text) + Convert.ToInt32(Label4.Text) + Convert.ToInt32(Label5.Text));
+                    }
+                }
             }
             else if (txt_Chosen3.Text == "")
             {
-                txt_Chosen3.Text = Convert.ToString(lbox_Rentables.SelectedItem);
+                string item = Convert.ToString(lbox_Rentables.SelectedItem);
+                string naam = item.Substring(6, 12);
+                foreach (Product p in products)
+                {
+                    if (p.Naam == naam)
+                    {
+                        Label3.Text = Convert.ToString(p.Prijs);
+                        txt_Chosen3.Text = p.Naam;
+                        Totaal.Text = Convert.ToString(Convert.ToInt32(Label1.Text) + Convert.ToInt32(Label2.Text) + Convert.ToInt32(Label3.Text) + Convert.ToInt32(Label4.Text) + Convert.ToInt32(Label5.Text));
+                    }
+                }
             }
             else if (txt_Chosen4.Text == "")
             {
-                txt_Chosen4.Text = Convert.ToString(lbox_Rentables.SelectedItem);
+                string item = Convert.ToString(lbox_Rentables.SelectedItem);
+                string naam = item.Substring(6, 12);
+                foreach (Product p in products)
+                {
+                    if (p.Naam == naam)
+                    {
+                        Label4.Text = Convert.ToString(p.Prijs);
+                        txt_Chosen4.Text = p.Naam;
+                        Totaal.Text = Convert.ToString(Convert.ToInt32(Label1.Text) + Convert.ToInt32(Label2.Text) + Convert.ToInt32(Label3.Text) + Convert.ToInt32(Label4.Text) + Convert.ToInt32(Label5.Text));
+                    }
+                }
             }
             else if (txt_Chosen5.Text == "")
             {
-                txt_Chosen5.Text = Convert.ToString(lbox_Rentables.SelectedItem);
+                string item = Convert.ToString(lbox_Rentables.SelectedItem);
+                string naam = item.Substring(6, 12);
+                foreach (Product p in products)
+                {
+                    if (p.Naam == naam)
+                    {
+                        Label5.Text = Convert.ToString(p.Prijs);
+                        txt_Chosen5.Text = p.Naam;
+                        Totaal.Text = Convert.ToString(Convert.ToInt32(Label1.Text) + Convert.ToInt32(Label2.Text) + Convert.ToInt32(Label3.Text) + Convert.ToInt32(Label4.Text)+Convert.ToInt32(Label5.Text));
+                    }
+                }
             }
         }
 
         protected void Remove1_Click(object sender, EventArgs e)
         {
             txt_Chosen1.Text = "";
-            Label1.Text = "€";
+            Label1.Text = "0";
+            Totaal.Text = Convert.ToString(Convert.ToInt32(Label1.Text) + Convert.ToInt32(Label2.Text) + Convert.ToInt32(Label3.Text) + Convert.ToInt32(Label4.Text) + Convert.ToInt32(Label5.Text));
         }
 
         protected void Remove2_Click(object sender, EventArgs e)
         {
             txt_Chosen2.Text = "";
-            Label2.Text = "€";
+            Label2.Text = "0";
+            Totaal.Text = Convert.ToString(Convert.ToInt32(Label1.Text) + Convert.ToInt32(Label2.Text) + Convert.ToInt32(Label3.Text) + Convert.ToInt32(Label4.Text) + Convert.ToInt32(Label5.Text));
         }
 
         protected void Remove3_Click(object sender, EventArgs e)
         {
             txt_Chosen3.Text = "";
-            Label3.Text = "€";
+            Label3.Text = "0";
+            Totaal.Text = Convert.ToString(Convert.ToInt32(Label1.Text) + Convert.ToInt32(Label2.Text) + Convert.ToInt32(Label3.Text) + Convert.ToInt32(Label4.Text) + Convert.ToInt32(Label5.Text));
         }
 
         protected void Remove4_Click(object sender, EventArgs e)
         {
             txt_Chosen4.Text = "";
-            Label4.Text = "€";
+            Label4.Text = "0";
+            Totaal.Text = Convert.ToString(Convert.ToInt32(Label1.Text) + Convert.ToInt32(Label2.Text) + Convert.ToInt32(Label3.Text) + Convert.ToInt32(Label4.Text) + Convert.ToInt32(Label5.Text));
         }
 
         protected void Remove5_Click(object sender, EventArgs e)
         {
             txt_Chosen5.Text = "";
-            Label5.Text = "€";
+            Label5.Text = "0";
+            Totaal.Text = Convert.ToString(Convert.ToInt32(Label1.Text) + Convert.ToInt32(Label2.Text) + Convert.ToInt32(Label3.Text) + Convert.ToInt32(Label4.Text)+Convert.ToInt32(Label5.Text));
         }
 
         protected void btn_Finish_Click(object sender, EventArgs e)
@@ -173,7 +228,6 @@ namespace Individuele_Opdracht
                 Product product = mng.GetProduct(naam);
                 Vraag vra = new Vraag(DateTime.Now, Tbox_Vraag_Vraag.Text, Tbox_Vraag_titel.Text);
                 mng.AddVraag(1, product.Naam, vra.Tekst, vra.Datum, vra.Titel);
-
                 List<Vraag> vragen = mng.GetVraag(product.Naam);
                 if (vragen != null)
                 {
