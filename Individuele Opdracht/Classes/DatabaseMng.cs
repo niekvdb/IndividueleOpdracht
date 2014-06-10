@@ -258,5 +258,58 @@
 
             return true;
         }
+
+        public bool AddVraag(int gebruikerid, string productnaam, string tekst, DateTime datum, string titel)
+        {
+            OracleCommand cmd = new OracleCommand();
+            try
+            {
+                this.Connect();
+                cmd.Connection = this.conn;
+                cmd.CommandText = "CreateVraag";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("p_gebruikerid", OracleDbType.Int32, gebruikerid, ParameterDirection.Input);
+                cmd.Parameters.Add("p_productnaam", OracleDbType.Varchar2, productnaam, ParameterDirection.Input);
+                cmd.Parameters.Add("p_titel", OracleDbType.Varchar2, titel, ParameterDirection.Input);
+                cmd.Parameters.Add("P_datum", OracleDbType.Date, datum, ParameterDirection.Input);
+                cmd.Parameters.Add("p_reactie", OracleDbType.Varchar2, tekst, ParameterDirection.Input);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+
+            return true;
+        }
+        public List<Vraag> GetVraag(string naam)
+        {
+            Vraag result = null;
+            List<Vraag> results = new List<Vraag>();
+            string sql = "SELECT * FROM Vraag WHERE PRODUCT_ID in (select PRODUCT_ID from PRODUCT where NAAM ='" + naam + "')";
+            try
+            {
+                this.Connect();
+                OracleCommand command = this.conn.CreateCommand();
+                command.CommandText = sql;
+                OracleDataReader reader2 = command.ExecuteReader();
+                while (reader2.Read())
+                {
+                    result = new Vraag(Convert.ToDateTime(reader2["Datum"]), Convert.ToString(reader2["INHOUD"]), Convert.ToString(reader2["TITEL"]));
+                    results.Add(result);
+                }
+            }
+            catch
+            {
+                return null;
+            }
+            this.Disconnect();
+            return results;
+        }
+
     }
 }

@@ -6,20 +6,19 @@
     using System.Web;
     public class Vraag
     {
-        public Gebruiker Gebruiker { get; set; }
+
         public DateTime Datum { get; set; }
         public string Tekst { get; set; }
         public string Titel { get; set; }
         public Product Product { get; set; }
         public Antwoord Antwoord { get; set; }
 
-        public Vraag(Gebruiker gebruiker,DateTime datum, string tekst,string titel,Product product)
+        public Vraag(DateTime datum, string tekst,string titel)
         {
-            this.Gebruiker = gebruiker;
             this.Datum = datum;
             this.Tekst = tekst;
             this.Titel = titel;
-            this.Product = product;
+
         }
 
         public bool IsBeantwoord()
@@ -33,6 +32,14 @@
         {
             this.Antwoord = antwoord;
 
+        }
+
+        public override string ToString()
+        {
+            return Environment.NewLine + "VRAAG:" + Environment.NewLine +
+                "Titel: " + this.Titel + Environment.NewLine +
+                "Datum: " + this.Datum + Environment.NewLine +
+                "Tekst: " + this.Tekst + Environment.NewLine;
         }
     }
 }

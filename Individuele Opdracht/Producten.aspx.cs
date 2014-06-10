@@ -129,37 +129,66 @@ namespace Individuele_Opdracht
 
         protected void Btn_Review_Click(object sender, EventArgs e)
         {
-            int score;
-            if (!Int32.TryParse(Tbox_Review_score.Text, out score))
+            if (TextBox1.Text != "")
             {
-                string error = "VOER EEN NUMMER IN";
-                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + error + "');", true);
-            }
-            else
-            {
-                string selected = TextBox1.Text;
-                string naam = selected.Substring(6, 12);
-                Product product = mng.GetProduct(naam);
-                Review rev = new Review(DateTime.Now, Tbox_Review_Reactie.Text, Tbox_Review_titel.Text, Convert.ToInt32(Tbox_Review_score.Text));
-                mng.AddReview(1, product.Naam, rev.Titel, rev.Datum, rev.Tekst, rev.Score);
-
-                List<Review> reviews = mng.GetReview(product.Naam);
-                if (reviews != null)
+                int score;
+                if (!Int32.TryParse(Tbox_Review_score.Text, out score))
                 {
-                    TextBox1.Text = product.ToString();
-                    foreach (Review rev1 in reviews)
+                    string error = "VOER EEN NUMMER IN";
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + error + "');", true);
+                }
+                else
+                {
+                    string selected = TextBox1.Text;
+                    string naam = selected.Substring(6, 12);
+                    Product product = mng.GetProduct(naam);
+                    Review rev = new Review(DateTime.Now, Tbox_Review_Reactie.Text, Tbox_Review_titel.Text, Convert.ToInt32(Tbox_Review_score.Text));
+                    mng.AddReview(1, product.Naam, rev.Titel, rev.Datum, rev.Tekst, rev.Score);
+
+                    List<Review> reviews = mng.GetReview(product.Naam);
+                    if (reviews != null)
                     {
-                        TextBox1.Text = TextBox1.Text + rev1.ToString();
+                        TextBox1.Text = product.ToString();
+                        foreach (Review rev1 in reviews)
+                        {
+                            TextBox1.Text = TextBox1.Text + rev1.ToString();
+                        }
                     }
                 }
             }
-
+            else
+            {
+                string error = "Kies een Product";
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + error + "');", true);
+            }
 
         }
 
         protected void Btn_PlaatsVraag_Click(object sender, EventArgs e)
         {
+            if (TextBox1.Text != "")
+            {
+                string selected = TextBox1.Text;
+                string naam = selected.Substring(6, 12);
+                Product product = mng.GetProduct(naam);
+                Vraag vra = new Vraag(DateTime.Now, Tbox_Vraag_Vraag.Text, Tbox_Vraag_titel.Text);
+                mng.AddVraag(1, product.Naam, vra.Tekst, vra.Datum, vra.Titel);
 
+                List<Vraag> vragen = mng.GetVraag(product.Naam);
+                if (vragen != null)
+                {
+                    TextBox1.Text = product.ToString();
+                    foreach (Vraag vra1 in vragen)
+                    {
+                        TextBox1.Text = TextBox1.Text + vra1.ToString();
+                    }
+                }
+            }
+            else
+            {
+                string error = "Kies een Product";
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + error + "');", true);
+            }
         }
   
     }
