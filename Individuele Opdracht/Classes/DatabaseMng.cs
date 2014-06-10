@@ -205,9 +205,10 @@
             return result;
         }
 
-        public Review GetReview(string naam)
+        public List<Review> GetReview(string naam)
         {
-            Review result = null;
+            Review result=null;
+            List<Review> results = new List<Review>();
             string sql = "SELECT * FROM Review WHERE PRODUCT_ID in (select PRODUCT_ID from PRODUCT where NAAM ='" + naam + "')";
             try
             {
@@ -217,7 +218,8 @@
                 OracleDataReader reader2 = command.ExecuteReader();
                 while (reader2.Read())
                 {
-                    result = new Review(Convert.ToDateTime(reader2["Datum"]), Convert.ToString(reader2["REACTIE"]), Convert.ToString(reader2["TEKST"]),Convert.ToInt32(reader2["SCORE"]));
+                    result=new Review(Convert.ToDateTime(reader2["Datum"]), Convert.ToString(reader2["REACTIE"]), Convert.ToString(reader2["TEKST"]),Convert.ToInt32(reader2["SCORE"]));
+                    results.Add(result);
                 }
             }
             catch
@@ -225,7 +227,7 @@
                 return null;
             }
             this.Disconnect();
-            return result;
+            return results;
         }
     }
 }

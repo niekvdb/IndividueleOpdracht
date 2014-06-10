@@ -53,10 +53,15 @@
             <h1>Alle Producten</h1>
             <p>Voeg hier uw Producten toe </p>
             <div class="lead2">
-                       <asp:TextBox ID="TextBox1" runat="server" Width="600px" Height="600px" TextMode="MultiLine" >                                                    
+                       <asp:TextBox ID="TextBox1" runat="server" Width="600px" Height="200px" TextMode="MultiLine" >                                                    
                            </asp:TextBox>
-                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Btn_Review" runat="server" Text="PlaatsReview"  />
-                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Btn_PlaatsVraag" runat="server" Text="PlaatsVraag"  />
+                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Btn_Review" runat="server" Text="PlaatsReview" OnClick="Btn_Review_Click"  />
+                 <asp:TextBox  ID="Tbox_Review_titel" runat="server" Text="Titel"  />
+                 <asp:TextBox  ID="Tbox_Review_Reactie" runat="server" Text="Review"  />
+                <asp:TextBox  ID="Tbox_Review_score" runat="server" Text="Score"  />
+                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Btn_PlaatsVraag" runat="server" Text="PlaatsVraag" OnClick="Btn_PlaatsVraag_Click"  />
+                 <asp:TextBox  ID="Tbox_Vraag_titel" runat="server" Text="Titel"  />
+                 <asp:TextBox  ID="Tbox_Vraag_Vraag" runat="server" Text="Vraag"  />
                 </div>
             <!-- Listbox -->
             <div class="lead">
@@ -68,6 +73,7 @@
 
             <!--Add Item Button -->
             <div class="form-register">
+                 <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="btn_Refresh" runat="server" Text="Toon Producten" OnClick="btn_Refresh_Click" />
                 <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="btn_AddItem" runat="server" Text="Voeg toe" OnClick="btn_AddItem_Click" />
                 <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="btn_ShowINfo" runat="server" Text="Laat informatie zien" OnClick="btn_ShowINfo_Click" />
             </div>

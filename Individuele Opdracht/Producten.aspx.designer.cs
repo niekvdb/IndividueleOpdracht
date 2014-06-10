@@ -58,6 +58,33 @@ namespace Individuele_Opdracht {
         protected global::System.Web.UI.WebControls.Button Btn_Review;
         
         /// <summary>
+        /// Tbox_Review_titel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Tbox_Review_titel;
+        
+        /// <summary>
+        /// Tbox_Review_Reactie control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Tbox_Review_Reactie;
+        
+        /// <summary>
+        /// Tbox_Review_score control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Tbox_Review_score;
+        
+        /// <summary>
         /// Btn_PlaatsVraag control.
         /// </summary>
         /// <remarks>
@@ -67,6 +94,24 @@ namespace Individuele_Opdracht {
         protected global::System.Web.UI.WebControls.Button Btn_PlaatsVraag;
         
         /// <summary>
+        /// Tbox_Vraag_titel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Tbox_Vraag_titel;
+        
+        /// <summary>
+        /// Tbox_Vraag_Vraag control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Tbox_Vraag_Vraag;
+        
+        /// <summary>
         /// lbox_Rentables control.
         /// </summary>
         /// <remarks>
@@ -74,6 +119,15 @@ namespace Individuele_Opdracht {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox lbox_Rentables;
+        
+        /// <summary>
+        /// btn_Refresh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_Refresh;
         
         /// <summary>
         /// btn_AddItem control.
