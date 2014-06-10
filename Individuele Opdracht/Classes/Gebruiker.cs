@@ -6,20 +6,20 @@
     using System.Web;
     public class Gebruiker
     {
-        public string Voornaam { get; set; }
-        public string Achternaam { get; set; }
-        public string Wachtwoord { get; set; }
 
-        public Gebruiker(string voornaam,string achternaam, string wachtwoord)
+        public string Wachtwoord { get; set; }
+        public string Email { get; set; }
+
+        public Gebruiker(string wachtwoord,string email)
         {
-            this.Voornaam = voornaam;
-            this.Achternaam = achternaam;
+
             this.Wachtwoord = wachtwoord;
+            this.Email = email;
         }
 
         public override string ToString()
         {
-            return this.Voornaam + " " + this.Achternaam;
+            return this.Email + " " + this.Wachtwoord;
         }
     }
 }

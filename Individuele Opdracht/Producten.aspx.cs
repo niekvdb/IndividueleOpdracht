@@ -83,5 +83,16 @@ namespace Individuele_Opdracht
 
         }
 
+
+        protected void btn_ShowINfo_Click(object sender, EventArgs e)
+        {
+            string selected = lbox_Rentables.SelectedItem.ToString();
+            string naam = selected.Substring(6, 12);
+            Product x = mng.GetProduct(naam);
+            Review y = mng.GetReview(x.Naam);
+            TextBox1.Text = x.ToString() + y.ToString();
+        }
+
+  
     }
 }

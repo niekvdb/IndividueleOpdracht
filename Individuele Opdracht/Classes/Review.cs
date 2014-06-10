@@ -6,21 +6,29 @@
     using System.Web;
     public class Review
     {
-        public Gebruiker Gebruiker { get; set; }
+
         public DateTime Datum { get; set; }
         public string Tekst { get; set; }
         public string Titel { get; set; }
-        public Product Product { get; set; }
+
         public int Score { get; set; }
 
-        public Review(Gebruiker gebruiker,DateTime datum,string tekst, string titel, Product product,int score)
+        public Review(DateTime datum,string tekst, string titel, int score)
         {
-            this.Gebruiker = gebruiker;
+  
             this.Datum = datum;
             this.Tekst = tekst;
             this.Titel = titel;
-            this.Product = product;
             this.Score = score;
+        }
+        public override string ToString()
+        {
+            return Environment.NewLine+"REVIEW:" +Environment.NewLine+
+                "Titel: " + this.Titel + Environment.NewLine +
+                "Datum: " + this.Datum + Environment.NewLine +
+                "Tekst: " + this.Tekst + Environment.NewLine +
+                "Score: " + this.Score + Environment.NewLine;
+  
         }
     }
 }

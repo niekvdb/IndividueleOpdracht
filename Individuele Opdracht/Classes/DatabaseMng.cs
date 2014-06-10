@@ -64,7 +64,7 @@
         /// </summary>
         /// <param name="voornaam"></param>
         /// <returns>true als dat zo is anders false</returns>
-        public bool BestaatGebruiker(string voornaam)
+        public bool BestaatGebruiker(string email)
         {
             OracleCommand cmd = new OracleCommand();
             try
@@ -73,9 +73,13 @@
                 cmd.Connection = this.conn;
                 cmd.CommandText = "BestaatGebruiker";
                 cmd.CommandType = CommandType.StoredProcedure;
+
+
                 cmd.Parameters.Add(new OracleParameter("v_result", OracleDbType.Varchar2, 500));
                 cmd.Parameters["v_result"].Direction = ParameterDirection.ReturnValue;
-                cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, voornaam, ParameterDirection.Input);
+
+
+                cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, email, ParameterDirection.Input);
                 cmd.ExecuteNonQuery();
                 string auth = cmd.Parameters["v_result"].Value.ToString();
                 this.Disconnect();
@@ -100,7 +104,7 @@
         /// <param name="voornaam"></param>
         /// <param name="wachtwoord"></param>
         /// <returns>true als het gelukt is anders false</returns>
-        public bool MaakGebruiker(string voornaam, string wachtwoord)
+        public bool MaakGebruiker(string email, string wachtwoord)
         {
             OracleCommand cmd = new OracleCommand();
             try
@@ -109,8 +113,7 @@
                 cmd.Connection = this.conn;
                 cmd.CommandText = "CreateAccount";
                 cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, voornaam, ParameterDirection.Input);
+                cmd.Parameters.Add("p_voornaam", OracleDbType.Varchar2, email, ParameterDirection.Input);
                 cmd.Parameters.Add("p_pass", OracleDbType.Varchar2, wachtwoord, ParameterDirection.Input);
                 cmd.ExecuteNonQuery();
             }
@@ -131,7 +134,7 @@
         /// <returns>lijst van producten</returns>
         public List<Product> GetAlleProducten()
         {
-            List<Product> results = new List<Product>();
+            this.Disconnect();  List<Product> results = new List<Product>();
             string sql = "SELECT * FROM Product";
             try
             {
@@ -148,7 +151,7 @@
             {
                 throw;
             }
-
+            this.Disconnect();
             return results;
         }
         /// <summary>
@@ -156,10 +159,10 @@
         /// </summary>
         /// <param name="Voornaam"></param>
         /// <returns>gebruiker</returns>
-        public Gebruiker GetGebruiker(string voornaam)
+        public Gebruiker GetGebruiker(string email)
         {
             Gebruiker result = null;
-            string sql = "SELECT * FROM Gebruiker WHERE Voornaam ='" + voornaam + "'";
+            string sql = "SELECT * FROM Gebruiker WHERE Email ='" + email + "'";
             try
             {
                 this.Connect();
@@ -168,14 +171,60 @@
                 OracleDataReader reader2 = command.ExecuteReader();
                 while (reader2.Read())
                 {
-                    result = new Gebruiker(Convert.ToString(reader2["Voornaam"]), Convert.ToString(reader2["Achternaam"]), Convert.ToString(reader2["Wachtwoord"]));
+                    result = new Gebruiker(Convert.ToString(reader2["WACHTWOORD"]), Convert.ToString(reader2["EMAIL"]));
                 }
             }
             catch
             {
                 return null;
             }
+            this.Disconnect();
+            return result;
+        }
 
+        public Product GetProduct(string naam)
+        {
+            Product result = null;
+            string sql = "SELECT * FROM Product WHERE Naam ='" + naam + "'";
+            try
+            {
+                this.Connect();
+                OracleCommand command = this.conn.CreateCommand();
+                command.CommandText = sql;
+                OracleDataReader reader2 = command.ExecuteReader();
+                while (reader2.Read())
+                {
+                    result = new Product(Convert.ToString(reader2["Naam"]), Convert.ToDouble(reader2["Prijs"]),Convert.ToInt32(reader2["Score"]));
+                }
+            }
+            catch
+            {
+                return null;
+            }
+            this.Disconnect();
+            return result;
+        }
+
+        public Review GetReview(string naam)
+        {
+            Review result = null;
+            string sql = "SELECT * FROM Review WHERE PRODUCT_ID in (select PRODUCT_ID from PRODUCT where NAAM ='" + naam + "')";
+            try
+            {
+                this.Connect();
+                OracleCommand command = this.conn.CreateCommand();
+                command.CommandText = sql;
+                OracleDataReader reader2 = command.ExecuteReader();
+                while (reader2.Read())
+                {
+                    result = new Review(Convert.ToDateTime(reader2["Datum"]), Convert.ToString(reader2["REACTIE"]), Convert.ToString(reader2["TEKST"]),Convert.ToInt32(reader2["SCORE"]));
+                }
+            }
+            catch
+            {
+                return null;
+            }
+            this.Disconnect();
             return result;
         }
     }

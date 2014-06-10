@@ -40,6 +40,33 @@ namespace Individuele_Opdracht {
         protected global::System.Web.UI.WebControls.HyperLink LoginMenu;
         
         /// <summary>
+        /// TextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        
+        /// <summary>
+        /// Btn_Review control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Btn_Review;
+        
+        /// <summary>
+        /// Btn_PlaatsVraag control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Btn_PlaatsVraag;
+        
+        /// <summary>
         /// lbox_Rentables control.
         /// </summary>
         /// <remarks>
@@ -56,6 +83,15 @@ namespace Individuele_Opdracht {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_AddItem;
+        
+        /// <summary>
+        /// btn_ShowINfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_ShowINfo;
         
         /// <summary>
         /// txt_Chosen1 control.

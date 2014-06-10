@@ -52,17 +52,24 @@
 <div class="container">
             <h1>Alle Producten</h1>
             <p>Voeg hier uw Producten toe </p>
-
+            <div class="lead2">
+                       <asp:TextBox ID="TextBox1" runat="server" Width="600px" Height="600px" TextMode="MultiLine" >                                                    
+                           </asp:TextBox>
+                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Btn_Review" runat="server" Text="PlaatsReview"  />
+                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Btn_PlaatsVraag" runat="server" Text="PlaatsVraag"  />
+                </div>
             <!-- Listbox -->
             <div class="lead">
-                <asp:ListBox ID="lbox_Rentables" runat="server">
+                <asp:ListBox ID="lbox_Rentables" runat="server" >
                   
                 </asp:ListBox>
             </div>
 
+
             <!--Add Item Button -->
             <div class="form-register">
                 <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="btn_AddItem" runat="server" Text="Voeg toe" OnClick="btn_AddItem_Click" />
+                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="btn_ShowINfo" runat="server" Text="Laat informatie zien" OnClick="btn_ShowINfo_Click" />
             </div>
             <!-- Item -->
             <div class="row">

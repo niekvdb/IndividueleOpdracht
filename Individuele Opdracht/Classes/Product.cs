@@ -42,7 +42,9 @@
 
         public override string ToString()
         {
-            return "Naam: " + this.Naam + " Prijs: " + this.Prijs + " Score: " + this.Score;
+            return "Naam: " + this.Naam + Environment.NewLine +
+                "Prijs: " + this.Prijs + Environment.NewLine +
+                "Score: " + this.Score + Environment.NewLine;
         }
     }
 }
