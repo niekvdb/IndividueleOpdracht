@@ -229,5 +229,34 @@
             this.Disconnect();
             return results;
         }
+
+        public bool AddReview(int gebruikerid, string productnaam, string titel, DateTime datum, string reactie, int score )
+        {
+            OracleCommand cmd = new OracleCommand();
+            try
+            {
+                this.Connect();
+                cmd.Connection = this.conn;
+                cmd.CommandText = "CreateReview";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("p_gebruikerid", OracleDbType.Int32, gebruikerid, ParameterDirection.Input);
+                cmd.Parameters.Add("p_productnaam", OracleDbType.Varchar2, productnaam, ParameterDirection.Input);
+                cmd.Parameters.Add("p_titel", OracleDbType.Varchar2, titel, ParameterDirection.Input);
+                cmd.Parameters.Add("P_datum", OracleDbType.Date, datum, ParameterDirection.Input);
+                cmd.Parameters.Add("p_reactie", OracleDbType.Varchar2, reactie, ParameterDirection.Input);
+                cmd.Parameters.Add("p_score", OracleDbType.Varchar2, score, ParameterDirection.Input);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw;            
+            }
+            finally
+            {
+                this.conn.Close();
+            }
+
+            return true;
+        }
     }
 }

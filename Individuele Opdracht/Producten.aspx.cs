@@ -129,6 +129,31 @@ namespace Individuele_Opdracht
 
         protected void Btn_Review_Click(object sender, EventArgs e)
         {
+            int score;
+            if (!Int32.TryParse(Tbox_Review_score.Text, out score))
+            {
+                string error = "VOER EEN NUMMER IN";
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + error + "');", true);
+            }
+            else
+            {
+                string selected = TextBox1.Text;
+                string naam = selected.Substring(6, 12);
+                Product product = mng.GetProduct(naam);
+                Review rev = new Review(DateTime.Now, Tbox_Review_Reactie.Text, Tbox_Review_titel.Text, Convert.ToInt32(Tbox_Review_score.Text));
+                mng.AddReview(1, product.Naam, rev.Titel, rev.Datum, rev.Tekst, rev.Score);
+
+                List<Review> reviews = mng.GetReview(product.Naam);
+                if (reviews != null)
+                {
+                    TextBox1.Text = product.ToString();
+                    foreach (Review rev1 in reviews)
+                    {
+                        TextBox1.Text = TextBox1.Text + rev1.ToString();
+                    }
+                }
+            }
+
 
         }
 
