@@ -48,7 +48,7 @@
         <div class="container">
             <div class="form-signin">
                 <h2 class="form-signin-heading">Meld hier aan</h2>
-                <asp:TextBox CssClass="form-control" ID="tb_voornaam" runat="server" placeholder="Voornaam" type="text" required="required" />
+                <asp:TextBox CssClass="form-control" ID="tb_voornaam" runat="server" placeholder="Email" type="text" required="required" />
                 <asp:TextBox CssClass="form-control" ID="tb_pw" runat="server" type="password" placeholder="Wachtwoord" required="required" />
                 <label class="checkbox">
                     <asp:CheckBox ID="cb_remember" runat="server" />

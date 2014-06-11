@@ -9,12 +9,15 @@ namespace Individuele_Opdracht
 {
     public partial class Producten : System.Web.UI.Page
     {
+
         private DatabaseMng mng = new DatabaseMng();
         private List<Product> products = new List<Product>();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.IsAuthenticated)
             {
+                Btn_PlaatsVraag.Enabled = true;
+                Btn_Review.Enabled = true;
                 LoginMenu.Text = "Logout";
                 RegMenu.Visible = false;
             }
@@ -153,19 +156,7 @@ namespace Individuele_Opdracht
             string selected = lbox_Rentables.SelectedItem.ToString();
             string naam = selected.Substring(6, 12);
             Product x = mng.GetProduct(naam);
-            List<Review> reviews = mng.GetReview(x.Naam);
-            if (reviews != null)
-            {
-                TextBox1.Text = x.ToString();
-                foreach (Review rev in reviews)
-                {
-                    TextBox1.Text = TextBox1.Text + rev.ToString();
-                }
-            }
-            else
-            {
-                TextBox1.Text = x.ToString();
-            }
+            LaatProductzien(x);
         }
         public void Refresh()
         {
@@ -199,16 +190,7 @@ namespace Individuele_Opdracht
                     Product product = mng.GetProduct(naam);
                     Review rev = new Review(DateTime.Now, Tbox_Review_Reactie.Text, Tbox_Review_titel.Text, Convert.ToInt32(Tbox_Review_score.Text));
                     mng.AddReview(1, product.Naam, rev.Titel, rev.Datum, rev.Tekst, rev.Score);
-
-                    List<Review> reviews = mng.GetReview(product.Naam);
-                    if (reviews != null)
-                    {
-                        TextBox1.Text = product.ToString();
-                        foreach (Review rev1 in reviews)
-                        {
-                            TextBox1.Text = TextBox1.Text + rev1.ToString();
-                        }
-                    }
+                    LaatProductzien(product);                  
                 }
             }
             else
@@ -228,15 +210,7 @@ namespace Individuele_Opdracht
                 Product product = mng.GetProduct(naam);
                 Vraag vra = new Vraag(DateTime.Now, Tbox_Vraag_Vraag.Text, Tbox_Vraag_titel.Text);
                 mng.AddVraag(1, product.Naam, vra.Tekst, vra.Datum, vra.Titel);
-                List<Vraag> vragen = mng.GetVraag(product.Naam);
-                if (vragen != null)
-                {
-                    TextBox1.Text = product.ToString();
-                    foreach (Vraag vra1 in vragen)
-                    {
-                        TextBox1.Text = TextBox1.Text + vra1.ToString();
-                    }
-                }
+                LaatProductzien(product);
             }
             else
             {
@@ -244,6 +218,50 @@ namespace Individuele_Opdracht
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + error + "');", true);
             }
         }
-  
+
+        protected void Btn_Zoek_Click(object sender, EventArgs e)
+        {
+            Product product = mng.GetProduct(TextBox2.Text);
+           if( product!=null)
+           {
+               LaatProductzien(product);              
+           }
+           else
+           {
+               string error = "PRODUCT NIET GEVONDEN";
+               ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + error + "');", true);
+           }
+        }
+        public void LaatProductzien(Product product)
+        {
+            List<Vraag> vragen = mng.GetVraag(product.Naam);
+            List<Review> reviews = mng.GetReview(product.Naam);
+            if (reviews != null)
+            {
+                TextBox1.Text = product.ToString();
+                foreach (Review rev in reviews)
+                {
+                    TextBox1.Text = TextBox1.Text + rev.ToString();
+                }
+                if (vragen != null)
+                {
+                    foreach (Vraag vra in vragen)
+                    {
+                        TextBox1.Text = TextBox1.Text + vra.ToString();
+                    }
+                }
+            }
+            else
+            {
+                TextBox1.Text = product.ToString();
+                if (vragen != null)
+                {
+                    foreach (Vraag vra in vragen)
+                    {
+                        TextBox1.Text = TextBox1.Text + vra.ToString();
+                    }
+                }
+            }
+        }
     }
 }

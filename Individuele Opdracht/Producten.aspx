@@ -53,13 +53,15 @@
             <h1>Alle Producten</h1>
             <p>Voeg hier uw Producten toe </p>
             <div class="lead2">
+                <asp:TextBox ID="TextBox2" runat="server" Width="100px" Height="30px" > </asp:TextBox>   
+                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Btn_Zoek" runat="server" Text="Zoek" Width="100px" OnClick="Btn_Zoek_Click"  />                                                
                        <asp:TextBox ID="TextBox1" runat="server" Width="600px" Height="200px" TextMode="MultiLine" >                                                    
                            </asp:TextBox>
-                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Btn_Review" runat="server" Text="PlaatsReview" OnClick="Btn_Review_Click"  />
+                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Btn_Review" runat="server" Enabled="false" Text="PlaatsReview" OnClick="Btn_Review_Click"  />
                  <asp:TextBox  ID="Tbox_Review_titel" runat="server" Text="Titel"  />
                  <asp:TextBox  ID="Tbox_Review_Reactie" runat="server" Text="Review"  />
                 <asp:TextBox  ID="Tbox_Review_score" runat="server" Text="Score"  />
-                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Btn_PlaatsVraag" runat="server" Text="PlaatsVraag" OnClick="Btn_PlaatsVraag_Click"  />
+                <asp:Button CssClass="btn btn-lg btn-primary btn-block" ID="Btn_PlaatsVraag" runat="server" Enabled="false" Text="PlaatsVraag" OnClick="Btn_PlaatsVraag_Click"  />
                  <asp:TextBox  ID="Tbox_Vraag_titel" runat="server" Text="Titel"  />
                  <asp:TextBox  ID="Tbox_Vraag_Vraag" runat="server" Text="Vraag"  />
                 </div>
